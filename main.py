@@ -83,7 +83,7 @@ def fetch_today_menu(content: dict, db:Session = Depends(get_db)):
         return JSONResponse(content=data)
     
 '''
-행복 기숙사 식단 받아오는 코드 작성
+행복 기숙사 식단 받아오는 코드 추가예정
 '''
     
 @app.post("/tommorowMenu", response_model=None)
@@ -96,7 +96,7 @@ def fetch_tommorow_menu(content: dict, db:Session = Depends(get_db)):
         return JSONResponse(content=data)
 
 '''
-행복 기숙사 식단 받아오는 코드 작성
+행복 기숙사 식단 받아오는 코드 추가예정
 '''
 
 @app.post("/weekMenu", response_model=None)
@@ -109,7 +109,7 @@ def fetch_week_menu(content: dict, db:Session = Depends(get_db)):
         return JSONResponse(content=data)
         
 '''
-행복 기숙사 식단 받아오는 코드 작성
+행복 기숙사 식단 받아오는 코드 추가예정
 '''
     
 if __name__ == "__main__":
