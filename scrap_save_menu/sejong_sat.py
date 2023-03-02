@@ -36,7 +36,7 @@ class SejongSatMenu:
         breakfast = driver.find_element_by_xpath(breakfast_x_path).text
         lunch =driver.find_element_by_xpath(lunch_x_path).text
         dinner = driver.find_element_by_xpath(dinner_x_path).text
-        crud.save_menu_sejong(db=db, date=iso_date_str,breakfast=breakfast,lunch=lunch , dinner=dinner)
+        crud.save_sejong_menu(db=db, date=iso_date_str,breakfast=breakfast,lunch=lunch , dinner=dinner)
 
         db.close()
         driver.quit()

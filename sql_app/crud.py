@@ -31,13 +31,13 @@ def save_menu(db:Session,date:str,breakfast:str,takeout:str, lunch:str,dinner:st
     db.refresh(db_menu)
     return db_menu
 
-def read_menu(db:Session, date:str):
+def read_happy_menu(db:Session, date:str):
     return(
     db.query(models.Menu).filter(models.Menu.date == date).first()
     )
 
 # 세종 저장 
-def save_menu_sejong(db:Session,date:str,breakfast:str, lunch:str,dinner:str):
+def save_sejong_menu(db:Session,date:str,breakfast:str, lunch:str,dinner:str):
     db_menu = models.SejongMenu(date=date,breakfast=breakfast,lunch=lunch,dinner=dinner)
     db.add(db_menu)
     db.commit()
@@ -45,7 +45,7 @@ def save_menu_sejong(db:Session,date:str,breakfast:str, lunch:str,dinner:str):
     return db_menu
 
 
-def read_menu_sejong(db:Session, date:str):
+def read_sejong_menu(db:Session, date:str):
     return(
     db.query(models.SejongMenu).filter(models.SejongMenu.date == date).first()
     )
