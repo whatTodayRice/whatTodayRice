@@ -29,6 +29,10 @@ class ScrapAndSave:
         url = "https://dormitory.pknu.ac.kr/03_notice/notice01.php"
         driver.get(url)
         db = SessionLocal()
+        next_button = WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="calField"]/p/a[2]/img')))
+        next_button.click()
+        time.sleep(5)
 
         for i in range(2,8):
             date_x_path = f'//*[@id="calField"]/div/table/thead/tr/th[{i}]'
@@ -47,7 +51,7 @@ class ScrapAndSave:
             crud.save_menu_sejong(db=db, date=iso_date_str,breakfast=breakfast,lunch=lunch , dinner=dinner)
 
         db.close()
-        driver.quit()
+        driver.close()
     
     '''
     행복 식단 스크랩 및 DB 저장 코드 
