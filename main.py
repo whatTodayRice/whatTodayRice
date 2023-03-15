@@ -9,11 +9,11 @@ from sql_app.database import SessionLocal,engine
 from sql_app.crud import create_user,read_user
 from template import KakaoTemplate
 from datetime import datetime, timezone, timedelta
-from both_dormitory import ScrapAndSave
 from constants import Constants
+from scrap_save_menu.both_dormitory import ScrapAndSave
 
 models.Base.metadata.create_all(bind=engine)
-
+ 
 app = FastAPI()
 
 def get_db():
@@ -52,7 +52,6 @@ def register_user_dormitory(response: Dict, db:Session = Depends(get_db)):
         # 동일등록
         else:
         	return KakaoTemplate.build_simple_text(dormitory_resister_confirm_text)
-    
     
 '''
 	오늘,내일,주간 식단받아오는 코드 
@@ -130,7 +129,9 @@ def fetch_week_menu(content: dict, db:Session = Depends(get_db)):
             return KakaoTemplate.build_simple_text(happy_week_menu)
         else: 
              return KakaoTemplate.build_no_menu_text(Constants.inform_not_update_menu_text)
-            
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=2000)
+    
+    
