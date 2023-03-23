@@ -73,6 +73,8 @@ class ScrapAndSave:
         driver.get(url)
         db = SessionLocal()
         
+        driver.find_element_by_xpath('//*[@id="sub"]/div/div/div[2]/a[2]').click()
+        
         driver.find_element_by_xpath('//*[@id="showAllBtn"]').click()
 
         for i in range(2,9):
