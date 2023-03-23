@@ -10,7 +10,7 @@ from sql_app.crud import create_user,read_user
 from template import KakaoTemplate
 from datetime import datetime, timezone, timedelta
 from constants import Constants
-from scrap_save_menu.both_dormitory import ScrapAndSave
+#from scrap_save_menu.both_dormitory import ScrapAndSave
 
 models.Base.metadata.create_all(bind=engine)
  
@@ -71,6 +71,7 @@ def fetch_today_menu(content: dict, db:Session = Depends(get_db)):
         return KakaoTemplate.build_register_dormitory_text(Constants.dormitory_register_request_text)
     
     if (user.dormitory == "세종"):
+        # ScrapAndSave.sejong_scrap_save_menu()
         sejong_today_menu = Sejong.fetch_today_menu(db)
         if sejong_today_menu:
             return KakaoTemplate.build_simple_text(sejong_today_menu)
@@ -78,6 +79,7 @@ def fetch_today_menu(content: dict, db:Session = Depends(get_db)):
             return KakaoTemplate.build_no_menu_text(Constants.inform_not_update_menu_text)
             
     if (user.dormitory == "행복"):
+        #ScrapAndSave.happy_scrap_save_menu()
         happy_today_menu = Happy.fetch_today_menu(db)
         if happy_today_menu:
             return KakaoTemplate.build_simple_text(happy_today_menu)
