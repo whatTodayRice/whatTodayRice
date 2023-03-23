@@ -45,10 +45,11 @@ class Happy:
 
         menu= f'😊 {date_of_selected_menu} 식단입니다.\n\n🍙조식🍙\n{breakfast}\n\nTAKE-OUT : {takeout}\n\n🍘중식🍘\n{lunch}\n\n🍱석식🍱\n{dinner}'
 
-        today = datetime.date.today()
-        tomorrow_weekday = today.weekday() + 1 
+        # today = datetime.datetime.today().weekday()
+        # tomorrow_weekday = today.weekday() + 1 
+        tomorrow_weekday=time_record.strftime('%a')
 
-        if tomorrow_weekday == 5 or tomorrow_weekday == 6:
+        if tomorrow_weekday =='토'  or tomorrow_weekday == '일':
             menu +=  f'\n\n{Constants.happy_weekend_restaurant_hours_text}\n\n{Constants.for_notification_text}'
             return menu
         else:
