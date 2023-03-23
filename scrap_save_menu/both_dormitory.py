@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from sql_app import crud
 from sqlalchemy.orm import Session
 from sql_app.database import SessionLocal,engine
+import time
 
 
 class ScrapAndSave:
@@ -29,6 +30,10 @@ class ScrapAndSave:
         url = "https://dormitory.pknu.ac.kr/03_notice/notice01.php"
         driver.get(url)
         db = SessionLocal()
+        next_button = WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="calField"]/p/a[2]/img')))
+        next_button.click()
+        time.sleep(5)
 
         for i in range(2,8):
             date_x_path = f'//*[@id="calField"]/div/table/thead/tr/th[{i}]'
@@ -44,10 +49,10 @@ class ScrapAndSave:
             breakfast = driver.find_element_by_xpath(breakfast_x_path).text
             lunch =driver.find_element_by_xpath(lunch_x_path).text
             dinner = driver.find_element_by_xpath(dinner_x_path).text
-            crud.save_menu_sejong(db=db, date=iso_date_str,breakfast=breakfast,lunch=lunch , dinner=dinner)
+            crud.save_sejong_menu(db=db, date=iso_date_str,breakfast=breakfast,lunch=lunch , dinner=dinner)
 
         db.close()
-        driver.quit()
+        driver.close()
     
     '''
     행복 식단 스크랩 및 DB 저장 코드 
@@ -61,9 +66,16 @@ class ScrapAndSave:
         options.add_argument('--disable-dev-shm-usage')
 
         driver = webdriver.Chrome(options=options)
-        url = "https://test.happydorm.or.kr/busan/ko/0606/cafeteria/menu/"
+        
+        
+        url = "https://happydorm.or.kr/busan/ko/0606/cafeteria/menu/"
+    
         driver.get(url)
         db = SessionLocal()
+        
+        driver.find_element_by_xpath('//*[@id="sub"]/div/div/div[2]/a[2]').click()
+        
+        driver.find_element_by_xpath('//*[@id="showAllBtn"]').click()
 
         for i in range(2,9):
             date_x_path = f'//*[@id="sub"]/div/div/table[{i}]/thead/tr/th'
