@@ -1,47 +1,13 @@
-```
-┌───────────────────────────────────────────────┐
-                                       _       
-     __ _  ___   ___  _ __ _ __ ___   (_) ___  
-    / _` |/ _ \ / _ \| '__| '_ ` _ \  | |/ _ \ 
-   | (_| | (_) | (_) | |  | | | | | |_| | (_) |
-    \__, |\___/ \___/|_|  |_| |_| |_(_)_|\___/ 
-    |___/                                      
-			     🌩 𝘼𝙣𝙮𝙤𝙣𝙚 𝙘𝙖𝙣 𝙙𝙚𝙫𝙚𝙡𝙤𝙥!
-└───────────────────────────────────────────────┘
-```
+# 오늘 밥 뭐야?
 
-# goormIDE
-Welcome to goormIDE!
+- 기숙사 생들의 식단 확인을 더욱 편리하게 해드리기 위해 태어난 카카오톡 챗봇입니다.
 
-goormIDE is a powerful cloud IDE service to maximize productivity for developers and teams.  
-**DEVELOP WITH EXCELLENCE**  
+## Features
 
-`Happy coding! The goormIDE team`
-
-
-## 🔧 Tip & Guide
-
-* Command feature
-	* You can simply run your script using the shortcut icons on the top right.
-	* Check out `PROJECT > Common/Build/Run/Test/Find Command` in the top menu.
-	
-* Get URL and Port
-	* Click `PROJECT > URL/PORT` in top menu bar.
-	* You can get default URL/Port and add URL/Port in the top menu.
-
-* Useful shortcut
-	
-| Shortcuts name     | Command (Mac) | Command (Window) |
-| ------------------ | :-----------: | :--------------: |
-| Copy in Terminal   | ⌘ + C         | Ctrl + Shift + C |
-| Paste in Terminal  | ⌘ + V         | Ctrl + Shift + V |
-| Search File        | ⌥ + ⇧ + F     | Alt + Shift + F  |
-| Terminal Toggle    | ⌥ + ⇧ + B     | Alt + Shift + B  |
-| New Terminal       | ⌥ + ⇧ + T     | Alt + Shift + T  |
-| Code Formatting    | ⌥ + ⇧ + P     | Alt + Shift + P  |
-| Show All Shortcuts | ⌘ + H         | Ctrl + H         |
-
-## 💬 Support & Documentation
-
-Visit [https://ide.goorm.io](https://ide.goorm.io) to support and learn more about using goormIDE.  
-To watch some usage guides, visit [https://help.goorm.io/en/goormide](https://help.goorm.io/en/goormide)
+- 오늘 식단: 해당 버튼을 눌러 당일의 식단(아침, 점심, 저녁)을 챗봇이 알려드려요.
+- 내일 식단: 해당 버튼을 눌러 내일 식단(아침, 점심, 저녁)을 챗봇이 알려드려요.
+- 주간 식단: 해당 주의 원하는 요일의 식단을 챗봇이 알려드려요.
+- 기숙사 등록: 유저가 살고 있는 기숙사를 등록해드려요.
+- 식당 운영 시간: 기숙사 별 식당 운영 시간을 알려드려요.
+- 도움말: 오늘 밥 뭐야 챗봇 사용 방법을 알려드려요.
+- 홈으로: 주요 기능(오늘, 내일, 주간 식단, 기숙사 등록)을 한 눈에 보고 사용할 수 있어요.
