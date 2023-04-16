@@ -44,7 +44,9 @@ class Sejong:
         db_dinner=menu_item.dinner
         dinner = ', '.join(db_dinner.split('\n'))
         
-        menu= f'😊 {date_of_selected_menu} 식단입니다.\n\n🍙아침🍙\n{breakfast}\n\n🍘점심🍘\n{lunch}\n\n🍱저녁🍱\n{dinner}\n\n{Constants.sejong_weekday_restaurant_hours_text}\n\n{Constants.for_notification_text}'
+        menu_text= f'😊 {date_of_selected_menu} 식단입니다.\n\n🍙아침🍙\n{breakfast}\n\n🍘점심🍘\n{lunch}\n\n🍱저녁🍱\n{dinner}'
+        announcement_text = f'\n\n{Constants.sejong_weekday_restaurant_hours_text}\n\n{Constants.for_notification_text}'
+        menu = menu_text + announcement_text
         return menu
     
     def fetch_week_menu(self, db:Session, content:dict):
