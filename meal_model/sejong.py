@@ -65,9 +65,15 @@ class Sejong:
         # Calculate the date of the selected day for the current week
         KST = timezone(timedelta(hours=9))
         today = datetime.now(KST).date()
-        days_since_monday = today.weekday()  # Monday is 0 and Sunday is 6
-        monday_of_week = today - timedelta(days=days_since_monday)
-        selected_date = monday_of_week + relativedelta(weekday=selected_day)
+
+        # 이번 주를 기준으로 주간 식단을 불러오는 코드
+        # days_since_monday = today.weekday()  # Monday is 0 and Sunday is 6
+        # monday_of_week = today - timedelta(days=days_since_monday)
+
+        #다음 주를 기준으로 주간 식단을 불러오는 코드
+        days_until_monday = 7 - today.weekday()
+        next_monday = today + timedelta(days=days_until_monday)
+        selected_date = next_monday + relativedelta(weekday=selected_day)
         user_selected_date = selected_date.strftime('%Y-%m-%d')
         date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
         
