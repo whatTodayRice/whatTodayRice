@@ -50,10 +50,10 @@ class Happy:
         tomorrow_weekday=time_record.strftime('%a')
 
         if tomorrow_weekday =='토'  or tomorrow_weekday == '일':
-            menu +=  f'\n\n{Constants.happy_weekend_restaurant_hours_text}\n\n{Constants.for_notification_text}'
+            menu +=  f'\n\n{Constants.happy_weekend_restaurant_hours_text}\n\n{Constants.for_notification_text}\n\n{Constants.promotion_text}'
             return menu
         else:
-            menu += f'\n\n{Constants.happy_weekday_restaurant_hours_text}\n\n{Constants.for_notification_text}'
+            menu += f'\n\n{Constants.happy_weekday_restaurant_hours_text}\n\n{Constants.for_notification_text}\n\n{Constants.promotion_text}'
             return menu
         
     def fetch_week_menu(self,  db:Session,content:dict):
@@ -71,12 +71,22 @@ class Happy:
 
         KST = timezone(timedelta(hours=9))
         today = datetime.now(KST).date()
-        days_since_monday = today.weekday()  
+        
+        '''해당 주의 일요일에 다음 주의 일주일 치 식단을 만들지 못했을 때 로직'''
+        days_since_monday = today.weekday()
         monday_of_week = today - timedelta(days=days_since_monday)
         selected_date = monday_of_week + relativedelta(weekday=selected_day)
         user_selected_date = selected_date.strftime('%Y-%m-%d')
         date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
-
+        
+        '''해당 주의 일요일에 다음 주의 일주일치 식단을 만들기 위한 로직
+        days_until_monday = 7 - today.weekday()
+        next_monday = today + timedelta(days=days_until_monday)
+        selected_date = next_monday + relativedelta(weekday=selected_day)
+        user_selected_date = selected_date.strftime('%Y-%m-%d')
+        date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
+        '''
+        
         menu_item = crud.read_happy_menu(db=db, date=user_selected_date)
         
         breakfast=menu_item.breakfast
