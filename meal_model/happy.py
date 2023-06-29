@@ -79,13 +79,13 @@ class Happy:
         user_selected_date = selected_date.strftime('%Y-%m-%d')
         date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
         
-        '''해당 주의 일요일에 다음 주의 일주일치 식단을 만들기 위한 로직
-        days_until_monday = 7 - today.weekday()
-        next_monday = today + timedelta(days=days_until_monday)
-        selected_date = next_monday + relativedelta(weekday=selected_day)
-        user_selected_date = selected_date.strftime('%Y-%m-%d')
-        date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
-        '''
+        # '''해당 주의 일요일에 다음 주의 일주일치 식단을 만들기 위한 로직'''
+        # days_until_monday = 7 - today.weekday()
+        # next_monday = today + timedelta(days=days_until_monday)
+        # selected_date = next_monday + relativedelta(weekday=selected_day)
+        # user_selected_date = selected_date.strftime('%Y-%m-%d')
+        # date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
+        
         
         menu_item = crud.read_happy_menu(db=db, date=user_selected_date)
         

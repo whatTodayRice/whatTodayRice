@@ -13,7 +13,7 @@ locale.setlocale(locale.LC_TIME, 'ko_KR.utf-8')
 '''
 
 class Sejong:
-    def fetch_today_menu(self, db:Session):
+    def fetch_today_menu(self, db: Session):
         KST = timezone(timedelta(hours=9))
         date = datetime.now(KST).strftime("%Y-%m-%d")    
         date_of_selected_menu = datetime.now(KST).strftime('%m/%d(%a)')
@@ -64,19 +64,18 @@ class Sejong:
         today = datetime.now(KST).date()
         
         '''해당 주의 일요일에 다음 주의 일주일 치 식단을 만들지 못했을 때 로직'''
-        days_since_monday = today.weekday()  # Monday is 0 and Sunday is 6
-        monday_of_week = today - timedelta(days=days_since_monday)
-        selected_date = monday_of_week + relativedelta(weekday=selected_day)
-        user_selected_date = selected_date.strftime('%Y-%m-%d')
-        date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
+        # days_since_monday = today.weekday()  # Monday is 0 and Sunday is 6
+        # monday_of_week = today - timedelta(days=days_since_monday)
+        # selected_date = monday_of_week + relativedelta(weekday=selected_day)
+        # user_selected_date = selected_date.strftime('%Y-%m-%d')
+        # date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
         
-        '''해당 주의 일요일에 다음 주의 일주일치 식단을 만들기 위한 로직
+        '''해당 주의 일요일에 다음 주의 일주일치 식단을 만들기 위한 로직'''
         days_until_monday = 7 - today.weekday()
         next_monday = today + timedelta(days=days_until_monday)
         selected_date = next_monday + relativedelta(weekday=selected_day)
         user_selected_date = selected_date.strftime('%Y-%m-%d')
         date_of_selected_menu = selected_date.strftime('%m/%d(%a)')
-        '''
         
         menu_item = crud.read_sejong_menu(db=db, date=user_selected_date)
         

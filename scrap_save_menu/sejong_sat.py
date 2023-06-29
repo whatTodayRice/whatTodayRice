@@ -6,6 +6,9 @@ from datetime import datetime , timezone, timedelta
 from sql_app import crud
 from sqlalchemy.orm import Session
 from sql_app.database import SessionLocal, engine
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 '''
 	세종 토요일 식단 스크랩 및 DB 저장 코드
@@ -23,14 +26,17 @@ class SejongSatMenu:
         url = "https://dormitory.pknu.ac.kr/03_notice/notice01.php"
         driver.get(url)
         db = SessionLocal()
-        
+        next_button = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, '//*[@id="calField"]/p/a[2]/img')))
+        next_button.click()
+        time.sleep(5)
         breakfast_x_path = '//*[@id="calField"]/div/table/tbody/tr[1]/td[8]'
         lunch_x_path = '//*[@id="calField"]/div/table/tbody/tr[2]/td[8]'
         dinner_x_path = '//*[@id="calField"]/div/table/tbody/tr[3]/td[8]'
         
         date_string = driver.find_element_by_xpath('//*[@id="calField"]/div/table/thead/tr/th[8]').text
-        print(date_string)
-        date_obj = date_string.split("(")[1].rstrip(")")
+        print(date_string.split("(")[0])
+
+        date_obj = date_string.split("(")[0].rstrip(")")
         date = datetime.strptime(date_obj, "%m/%d")
         iso_date_str = date.replace(year=2023).strftime("%Y-%m-%d")
 

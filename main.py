@@ -10,6 +10,7 @@ from sql_app.crud import create_user,read_user
 from template import KakaoTemplate
 from datetime import datetime, timezone, timedelta
 from constants import Constants
+
 from scrap_save_menu.both_dormitory import ScrapAndSave
 from scrap_save_menu.sejong_sat import SejongSatMenu
 
@@ -121,7 +122,7 @@ def fetch_week_menu(content: dict, db:Session = Depends(get_db)):
     if (user.dormitory == "세종"):
         sejong_week_menu = Sejong.fetch_week_menu(db,content)
         if sejong_week_menu:
-        	return KakaoTemplate.build_simple_text(sejong_week_menu)
+            return KakaoTemplate.build_simple_text(sejong_week_menu)
         else: 
             return KakaoTemplate.build_no_menu_text(Constants.inform_not_update_menu_text)
             
