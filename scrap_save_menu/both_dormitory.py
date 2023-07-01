@@ -30,8 +30,7 @@ class ScrapAndSave:
         url = "https://dormitory.pknu.ac.kr/03_notice/notice01.php"
         driver.get(url)
         db = SessionLocal()
-        next_button = WebDriverWait(driver, 15).until(
-            EC.presence_of_element_located((By.XPATH, '//*[@id="calField"]/p/a[2]/img')))
+        next_button = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, '//*[@id="calField"]/p/a[2]/img')))
         next_button.click()
         time.sleep(5)
 
@@ -74,7 +73,6 @@ class ScrapAndSave:
         db = SessionLocal()
         
         driver.find_element_by_xpath('//*[@id="sub"]/div/div/div[2]/a[2]').click()
-        
         driver.find_element_by_xpath('//*[@id="showAllBtn"]').click()
 
         for i in range(2,9):
@@ -95,3 +93,4 @@ class ScrapAndSave:
             
         db.close()
         driver.quit()
+    
